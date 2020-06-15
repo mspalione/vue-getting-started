@@ -27,42 +27,63 @@
       <div class="column is-4" v-if="selectedHero">
         <div class="card">
           <header class="card-header">
-            <p class="card-header-title">{{ selectedHero.firstName }}</p>
+              <p class="card-header-title">{{ fullName }}</p>
           </header>
           <div class="card-content">
-            <div class="content">
-              <div class="field">
-                <label class="label" for="id">id</label>
-                <label class="input" id="id" readonly>{{
+              <div class="content">
+                  <div class="field">
+                      <label class="label" for="id">id</label>
+                      <label class="input" id="id" readonly>
+                          {{
                   selectedHero.id
-                }}</label>
-              </div>
-              <div class="field">
-                <label class="label" for="firstName">first name</label>
-                <input
-                  class="input"
-                  id="firstName"
-                  v-model="selectedHero.firstName"
-                />
-              </div>
-              <div class="field">
-                <label class="label" for="lastName">last name</label>
-                <input
-                  class="input"
-                  id="lastName"
-                  v-model="selectedHero.lastName"
-                />
-              </div>
-              <div class="field">
-                <label class="label" for="description">description</label>
-                <input
-                  class="input"
-                  id="description"
-                  v-model="selectedHero.description"
-                />
+                          }}
+                      </label>
+                  </div>
+                  <div class="field">
+                      <label class="label" for="firstName">first name</label>
+                      <input class="input"
+                             id="firstName"
+                             v-model="selectedHero.firstName" />
+                  </div>
+                  <div class="field">
+                      <label class="label" for="lastName">last name</label>
+                      <input class="input"
+                             id="lastName"
+                             v-model="selectedHero.lastName" />
+                  </div>
+                  <div class="field">
+                      <label class="label" for="description">description</label>
+                      <input class="input"
+                             id="description"
+                             v-model="selectedHero.description" />
+                  </div>
+                  <div class="field">
+                      <label class="label" for="originDate">origin date</label>
+                      <input 
+                             type="date"
+                             class="input"
+                             id="originDate"
+                             v-model="selectedHero.originDate" 
+                        />
+                      <p class="comment">
+                          My origin story began on 
+                          {{ selectedHero.originDate | shortDate }}
+                      </p>
+                  </div>
+                  <div class="field">
+                      <label class="label" for="capeCounter">Cape Counter</label>
+                      <input class="input"
+                             id="capeCounter"
+                             type="number"
+                             v-model="selectedHero.capeCounter" />
+                  </div>
+                  <div class="field">
+                      <label class="label" for="capeMessage">Cape Message</label>
+                      <label class="input" name="capeMessage">{{ capeMessage }}</label>
+                      
+                  </div>
               </div>
             </div>
-          </div>
           <footer class="card-footer">
             <button
               class="link card-footer-item cancel-button"
@@ -83,35 +104,81 @@
 </template>
 
 <script>
+    import { format } from 'date-fns';
+    const inputDateFormat = 'YYYY-MM-DD';
+    const displayDateFormat = 'MMM DD, YYYY';
 const ourHeroes = [
   {
     id: 10,
     firstName: 'Ella',
-    lastName: 'Papa',
+        lastName: 'Papa',
+        capeCounter: 1,
+        originDate: format(new Date(1999, 8, 1), inputDateFormat),
     description: 'fashionista',
   },
   {
     id: 20,
     firstName: 'Madelyn',
-    lastName: 'Papa',
+      lastName: 'Papa',
+      capeCounter: 3,
+      originDate: format(new Date(1998, 1, 27), inputDateFormat),
     description: 'the cat whisperer',
   },
   {
     id: 30,
     firstName: 'Haley',
-    lastName: 'Papa',
+      lastName: 'Papa',
+      capeCounter: 2,
+      originDate: format(new Date(2004, 7, 11), inputDateFormat),
     description: 'pen wielder',
   },
   {
     id: 40,
     firstName: 'Landon',
-    lastName: 'Papa',
+      lastName: 'Papa',
+      capeCounter: 0,
+      originDate: format(new Date(2000, 5, 1), inputDateFormat),
     description: 'arc trooper',
   },
 ];
 export default {
-  name: 'Heroes',
-  methods: {
+        name: 'Heroes',
+        data() {
+            return {
+                heroes: [],
+                selectedHero: undefined,
+                message: '',
+                capeMessage: '',
+            };
+        },
+        computed: {
+            fullName() {
+                return `${this.selectedHero.firstName} ${this.selectedHero.lastName}`;
+            },
+        },
+        created() {
+            this.loadHeroes(); 
+        },
+        methods: {
+            async getHeroes() {
+                return new Promise(resolve => {
+                    setTimeout(() => resolve(ourHeroes), 1500);
+                });
+            },
+            async loadHeroes() {
+                this.heroes = [];
+                this.message = 'getting the heroes. please be patient';
+                this.heroes = await this.getHeroes();
+                this.message = '';
+            },
+            watch: {
+                'selectedHero.capeCounter': {
+                    immediate: true,
+                    handler(newValue, oldValue) {
+                        this.handleTheCapes(newValue);
+                    },
+                },
+            },
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
       switch (value) {
@@ -140,6 +207,19 @@ export default {
     selectHero(hero) {
       this.selectedHero = hero;
     },
-  },
+        },
+        watch: {
+            'selectedHero.capeCounter': {
+                immediate: true,
+                handler(newValue, oldValue) {
+                    this.handleTheCapes(newValue);
+                },
+            },
+        },
+        filters: {
+            shortDate: function (value) {
+                return format(value, displayDateFormat);
+            },
+        },
 };
 </script>

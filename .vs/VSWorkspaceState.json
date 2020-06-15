@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\05-interacting-within-a-component\\begin",
+    "\\05-interacting-within-a-component\\begin\\vue-heroes",
+    "\\05-interacting-within-a-component\\begin\\vue-heroes\\src",
+    "\\05-interacting-within-a-component\\begin\\vue-heroes\\src\\components",
+    "\\06-component-communication",
+    "\\06-component-communication\\begin",
+    "\\06-component-communication\\begin\\vue-heroes"
   ],
+  "SelectedNode": "\\06-component-communication\\begin",
   "PreviewInSolutionExplorer": false
 }
