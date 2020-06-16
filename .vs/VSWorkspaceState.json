@@ -1,14 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\05-interacting-within-a-component\\begin",
-    "\\05-interacting-within-a-component\\begin\\vue-heroes",
-    "\\05-interacting-within-a-component\\begin\\vue-heroes\\src",
-    "\\05-interacting-within-a-component\\begin\\vue-heroes\\src\\components",
-    "\\06-component-communication",
     "\\06-component-communication\\begin",
-    "\\06-component-communication\\begin\\vue-heroes"
+    "\\06-component-communication\\begin\\vue-heroes",
+    "\\07-accessing-data",
+    "\\07-accessing-data\\begin",
+    "\\07-accessing-data\\begin\\vue-heroes",
+    "\\07-accessing-data\\begin\\vue-heroes\\public",
+    "\\07-accessing-data\\begin\\vue-heroes\\public\\api",
+    "\\07-accessing-data\\begin\\vue-heroes\\src",
+    "\\07-accessing-data\\begin\\vue-heroes\\src\\components",
+    "\\07-accessing-data\\begin\\vue-heroes\\src\\shared"
   ],
-  "SelectedNode": "\\06-component-communication\\begin",
+  "SelectedNode": "\\07-accessing-data\\begin\\vue-heroes\\src\\shared\\data.js",
   "PreviewInSolutionExplorer": false
 }
