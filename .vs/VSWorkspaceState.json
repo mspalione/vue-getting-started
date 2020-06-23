@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\08-routing\\begin",
-    "\\08-routing\\begin\\vue-heroes",
-    "\\08-routing\\begin\\vue-heroes\\src",
-    "\\08-routing\\begin\\vue-heroes\\src\\components",
-    "\\08-routing\\begin\\vue-heroes\\src\\views",
     "\\09-managing-state",
     "\\09-managing-state\\begin",
     "\\09-managing-state\\begin\\vue-heroes",
-    "\\09-managing-state\\begin\\vue-heroes\\src"
+    "\\09-managing-state\\begin\\vue-heroes\\src",
+    "\\09-managing-state\\begin\\vue-heroes\\src\\store",
+    "\\09-managing-state\\begin\\vue-heroes\\src\\views"
   ],
-  "SelectedNode": "\\09-managing-state\\begin\\vue-heroes",
+  "SelectedNode": "\\09-managing-state\\begin\\vue-heroes\\src\\store\\index.js",
   "PreviewInSolutionExplorer": false
 }
